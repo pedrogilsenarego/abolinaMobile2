@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 //import Snackbar from "./src/components/SnackBar";
 import { publishableKeyTest } from "./src/constants/stripe";
-//import Screens from "./src/screens";
+import Screens from "./src/screens";
 import { persistor, store } from "./src/slicer/createStore";
 
 const theme = {
@@ -39,9 +39,8 @@ export default function App() {
         <PersistGate persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <NavigationContainer theme={theme}>
-              <Text>Teste</Text>
-              {/* <Snackbar />
-              <Screens /> */}
+              {/* <Snackbar />*/}
+              <Screens />
             </NavigationContainer>
           </QueryClientProvider>
         </PersistGate>
