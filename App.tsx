@@ -39,7 +39,7 @@ export default function App() {
         <PersistGate persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <NavigationContainer theme={theme}>
-              {/* <Snackbar />*/}
+              {/* <Snackbar /> */}
               <Screens />
             </NavigationContainer>
           </QueryClientProvider>
