@@ -54,64 +54,64 @@ const AuthScreens = () => {
     </AuthStack.Navigator>
   );
 };
-// const HomeStack = () => {
-//   const navigation = useNavigation();
-//   const isFocused = useIsFocused();
+const HomeStack = () => {
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-//   useEffect(() => {
-//     if (!isFocused) {
-//       navigation.dispatch({
-//         ...CommonActions.reset({
-//           index: 0,
-//           routes: [{ name: ROUTE_PATHS.MAIN_HOME }],
-//         }),
-//       });
-//     }
-//   }, [navigation, isFocused]);
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{ headerShown: false }}
-//       initialRouteName={ROUTE_PATHS.MAIN_HOME}
-//     >
-//       <Stack.Screen name={ROUTE_PATHS.MAIN_HOME} component={HomeScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.SHELVES} component={ShelvesScreen} />
-//       <Stack.Screen
-//         name={ROUTE_PATHS.SHELVES_CONFIG}
-//         component={ShelvesScreenConfig}
-//       />
-//       <Stack.Screen
-//         name={ROUTE_PATHS.BOOK_READER}
-//         component={BookReaderScreen}
-//       />
-//     </Stack.Navigator>
-//   );
-// };
+  useEffect(() => {
+    if (!isFocused) {
+      navigation.dispatch({
+        ...CommonActions.reset({
+          index: 0,
+          routes: [{ name: ROUTE_PATHS.MAIN_HOME }],
+        }),
+      });
+    }
+  }, [navigation, isFocused]);
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={ROUTE_PATHS.MAIN_HOME}
+    >
+      <Stack.Screen name={ROUTE_PATHS.MAIN_HOME} component={HomeScreen} />
+      <Stack.Screen name={ROUTE_PATHS.SHELVES} component={ShelvesScreen} />
+      <Stack.Screen
+        name={ROUTE_PATHS.SHELVES_CONFIG}
+        component={ShelvesScreenConfig}
+      />
+      <Stack.Screen
+        name={ROUTE_PATHS.BOOK_READER}
+        component={BookReaderScreen}
+      />
+    </Stack.Navigator>
+  );
+};
 
-// const FavoritesStack = () => {
-//   const navigation = useNavigation();
-//   const isFocused = useIsFocused();
+const FavoritesStack = () => {
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-//   useEffect(() => {
-//     if (!isFocused) {
-//       navigation.dispatch({
-//         ...CommonActions.reset({
-//           index: 0,
-//           routes: [{ name: ROUTE_PATHS.FAVORITES }],
-//         }),
-//       });
-//     }
-//   }, [navigation, isFocused]);
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{ headerShown: false }}
-//       initialRouteName={ROUTE_PATHS.FAVORITES}
-//     >
-//       <Stack.Screen name={ROUTE_PATHS.FAVORITES} component={FavoritesScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.CART} component={CartScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.CHECKOUT} component={CheckoutScreen} />
-//     </Stack.Navigator>
-//   );
-// };
+  useEffect(() => {
+    if (!isFocused) {
+      navigation.dispatch({
+        ...CommonActions.reset({
+          index: 0,
+          routes: [{ name: ROUTE_PATHS.FAVORITES }],
+        }),
+      });
+    }
+  }, [navigation, isFocused]);
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={ROUTE_PATHS.FAVORITES}
+    >
+      <Stack.Screen name={ROUTE_PATHS.FAVORITES} component={FavoritesScreen} />
+      <Stack.Screen name={ROUTE_PATHS.CART} component={CartScreen} />
+      <Stack.Screen name={ROUTE_PATHS.CHECKOUT} component={CheckoutScreen} />
+    </Stack.Navigator>
+  );
+};
 
 // const OfferStack = () => {
 //   return (
@@ -239,7 +239,7 @@ const Screens = () => {
         },
       }}
     >
-      {/* <Tab.Screen
+      <Tab.Screen
         name={i18n.t("bottomMenu.favorites")}
         component={FavoritesStack}
         options={{
@@ -263,7 +263,7 @@ const Screens = () => {
             </View>
           ),
         }}
-      /> */}
+      />
       {/* <Tab.Screen
         name={i18n.t("bottomMenu.offer")}
         component={OfferStack}
@@ -289,7 +289,7 @@ const Screens = () => {
           ),
         }}
       /> */}
-      {/* <Tab.Screen
+      <Tab.Screen
         name={ROUTE_PATHS.HOME}
         component={HomeStack}
         options={{
@@ -313,7 +313,7 @@ const Screens = () => {
             </View>
           ),
         }}
-      /> */}
+      />
       {/* <Tab.Screen
         name={i18n.t("bottomMenu.shop")}
         component={ShopStack}
