@@ -9,7 +9,7 @@ import useMainColors from "../../../hooks/useMainColors";
 import { setShelf } from "../../../slicer/homeFilters/homeFilters.actions";
 import useShelves from "./useShelves";
 
-const ShelvesNew = () => {
+const ShelvesNew = ({ setOpenSide }: any) => {
   const dispatch = useDispatch();
   const { shelves, currentShelf } = useShelves();
   const { backgroundColor, textColor } = useMainColors();
@@ -83,6 +83,8 @@ const ShelvesNew = () => {
           <TouchableOpacity
             onPress={() => {
               dispatch(setShelf("Todos os  meus livros"));
+              setOpenSide(false);
+
               // @ts-ignore
               navigation.navigate(ROUTE_PATHS.SHELVES_CONFIG);
             }}
