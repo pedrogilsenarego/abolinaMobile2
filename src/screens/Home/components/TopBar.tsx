@@ -174,7 +174,7 @@ const TopBar = ({ setSearchField }: Props) => {
             onClose={() => setOpenSide(false)}
             barRef={barRef}
           >
-            <ShelvesNew />
+            <ShelvesNew setOpenSide={setOpenSide} />
           </DrawerPopup>
         </View>
       </View>

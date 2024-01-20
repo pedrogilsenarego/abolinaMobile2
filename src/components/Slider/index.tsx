@@ -35,28 +35,34 @@ const Slider = ({ filteredBooks, currentIndex, setCurrentIndex }: Props) => {
   const newShelfs = [allBooksShelf, ...shelfs];
   const navigation = useNavigation();
   const [currentIndexPagination, setCurrentIndexPagination] = useState(0);
+  const [scrollMode, setScrollMode] = useState(false);
 
   const handleOnScroll = (event: any) => {
+    setScrollMode(true);
     const xOffset = event.nativeEvent.contentOffset.x;
     const index = Math.round(xOffset / width);
-
-    // Only update the currentIndex in the state, without triggering automatic scrolling
+    dispatch(setShelf(newShelfs[index].title));
     setCurrentIndexPagination(index);
+    setTimeout(() => {
+      setScrollMode(false);
+    }, 100);
   };
+
+  console.log(shelf, scrollMode);
 
   useEffect(() => {
     const index = newShelfs.findIndex((shelfA) => shelfA.title === shelf);
 
-    if (index >= 0 && currentIndex !== index) {
+    if (index >= 0 && !scrollMode) {
       // Only update the currentIndex in the state, without triggering automatic scrolling
-      setCurrentIndex(index);
+
       setCurrentIndexPagination(index);
       // Scroll to the new index after a short delay to avoid conflicts with handleOnScroll
       setTimeout(() => {
         flatListRef.current?.scrollToIndex({ index, animated: true });
       }, 100);
     }
-  }, [shelf, shelfs, currentIndex]);
+  }, [shelf, shelfs]);
 
   return (
     <View style={{ position: "relative" }}>

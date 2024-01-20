@@ -113,81 +113,81 @@ const FavoritesStack = () => {
   );
 };
 
-// const OfferStack = () => {
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{ headerShown: false }}
-//       initialRouteName={ROUTE_PATHS.OFFER}
-//     >
-//       <Stack.Screen name={ROUTE_PATHS.OFFER} component={OfferScreen} />
-//     </Stack.Navigator>
-//   );
-// };
+const OfferStack = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={ROUTE_PATHS.OFFER}
+    >
+      <Stack.Screen name={ROUTE_PATHS.OFFER} component={OfferScreen} />
+    </Stack.Navigator>
+  );
+};
 
-// const SettingsStack = () => {
-//   const navigation = useNavigation();
-//   const isFocused = useIsFocused();
+const SettingsStack = () => {
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-//   useEffect(() => {
-//     if (!isFocused) {
-//       navigation.dispatch({
-//         ...CommonActions.reset({
-//           index: 0,
-//           routes: [{ name: ROUTE_PATHS.MAIN_MENU }],
-//         }),
-//       });
-//     }
-//   }, [navigation, isFocused]);
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{ headerShown: false }}
-//       initialRouteName={ROUTE_PATHS.MAIN_MENU}
-//     >
-//       <Stack.Screen name={ROUTE_PATHS.MAIN_MENU} component={MainMenuScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.SETTINGS} component={SettingsScreen} />
-//     </Stack.Navigator>
-//   );
-// };
+  useEffect(() => {
+    if (!isFocused) {
+      navigation.dispatch({
+        ...CommonActions.reset({
+          index: 0,
+          routes: [{ name: ROUTE_PATHS.MAIN_MENU }],
+        }),
+      });
+    }
+  }, [navigation, isFocused]);
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={ROUTE_PATHS.MAIN_MENU}
+    >
+      <Stack.Screen name={ROUTE_PATHS.MAIN_MENU} component={MainMenuScreen} />
+      <Stack.Screen name={ROUTE_PATHS.SETTINGS} component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+};
 
-// const ShopStack = () => {
-//   const navigation = useNavigation();
-//   const isFocused = useIsFocused();
+const ShopStack = () => {
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-//   useEffect(() => {
-//     if (!isFocused) {
-//       navigation.dispatch({
-//         ...CommonActions.reset({
-//           index: 0,
-//           routes: [{ name: ROUTE_PATHS.SHOP }],
-//         }),
-//       });
-//     }
-//   }, [navigation, isFocused]);
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{ headerShown: false }}
-//       initialRouteName={ROUTE_PATHS.SHOP}
-//     >
-//       <Stack.Screen name={ROUTE_PATHS.SHOP} component={ShopScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.SHOP_MENU} component={ShopMenuScreen} />
-//       <Stack.Screen
-//         name={ROUTE_PATHS.SHOP_SEARCH}
-//         component={ShopSearchScreen}
-//       />
-//       <Stack.Screen
-//         name={ROUTE_PATHS.SHOP_COLLECTIONS}
-//         component={ShopCollectionsScreen}
-//       />
-//       <Stack.Screen
-//         name={ROUTE_PATHS.SHOP_COLLECTION}
-//         component={ShopCollectionScreen}
-//       />
-//       <Stack.Screen name={ROUTE_PATHS.CART} component={CartScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.CHECKOUT} component={CheckoutScreen} />
-//       <Stack.Screen name={ROUTE_PATHS.BOOK_SHOP} component={ShopBookScreen} />
-//     </Stack.Navigator>
-//   );
-// };
+  useEffect(() => {
+    if (!isFocused) {
+      navigation.dispatch({
+        ...CommonActions.reset({
+          index: 0,
+          routes: [{ name: ROUTE_PATHS.SHOP }],
+        }),
+      });
+    }
+  }, [navigation, isFocused]);
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={ROUTE_PATHS.SHOP}
+    >
+      <Stack.Screen name={ROUTE_PATHS.SHOP} component={ShopScreen} />
+      <Stack.Screen name={ROUTE_PATHS.SHOP_MENU} component={ShopMenuScreen} />
+      <Stack.Screen
+        name={ROUTE_PATHS.SHOP_SEARCH}
+        component={ShopSearchScreen}
+      />
+      <Stack.Screen
+        name={ROUTE_PATHS.SHOP_COLLECTIONS}
+        component={ShopCollectionsScreen}
+      />
+      <Stack.Screen
+        name={ROUTE_PATHS.SHOP_COLLECTION}
+        component={ShopCollectionScreen}
+      />
+      <Stack.Screen name={ROUTE_PATHS.CART} component={CartScreen} />
+      <Stack.Screen name={ROUTE_PATHS.CHECKOUT} component={CheckoutScreen} />
+      <Stack.Screen name={ROUTE_PATHS.BOOK_SHOP} component={ShopBookScreen} />
+    </Stack.Navigator>
+  );
+};
 
 const Screens = () => {
   const dispatch = useDispatch();
@@ -264,7 +264,7 @@ const Screens = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name={i18n.t("bottomMenu.offer")}
         component={OfferStack}
         options={{
@@ -288,7 +288,7 @@ const Screens = () => {
             </View>
           ),
         }}
-      /> */}
+      />
       <Tab.Screen
         name={ROUTE_PATHS.HOME}
         component={HomeStack}
@@ -314,7 +314,7 @@ const Screens = () => {
           ),
         }}
       />
-      {/* <Tab.Screen
+      <Tab.Screen
         name={i18n.t("bottomMenu.shop")}
         component={ShopStack}
         options={{
@@ -338,8 +338,8 @@ const Screens = () => {
             </View>
           ),
         }}
-      /> */}
-      {/* <Tab.Screen
+      />
+      <Tab.Screen
         name={i18n.t("bottomMenu.more")}
         component={SettingsStack}
         options={{
@@ -366,7 +366,7 @@ const Screens = () => {
             </View>
           ),
         }}
-      /> */}
+      />
     </Tab.Navigator>
   );
 };
