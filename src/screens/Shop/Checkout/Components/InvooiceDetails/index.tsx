@@ -180,10 +180,15 @@ const InvoiceDetails = () => {
                 {i18n.t("modules.checkout.userDetails")}
               </Text>
 
-              <TextField name="email" label={i18n.t("modules.login.email")} />
+              <TextField
+                name="email"
+                label={i18n.t("modules.login.email")}
+                colorLabel={textColor}
+              />
               <TextField
                 name="phone"
                 label={i18n.t("modules.checkout.form.phone")}
+                colorLabel={textColor}
               />
             </View>
             <View style={{ rowGap: 20 }}>
@@ -195,20 +200,25 @@ const InvoiceDetails = () => {
               <TextField
                 name="name"
                 label={i18n.t("modules.checkout.form.name")}
+                colorLabel={textColor}
               />
               <TextField
                 name="surname"
                 label={i18n.t("modules.checkout.form.surname")}
+                colorLabel={textColor}
               />
               <TextField
                 name="address"
                 label={i18n.t("modules.checkout.form.address")}
+                colorLabel={textColor}
               />
               <TextField
                 name="postalCode"
                 label={i18n.t("modules.checkout.form.postalCode")}
+                colorLabel={textColor}
               />
               <DropdownForm
+                colorLabel={textColor}
                 options={countryList}
                 name="country"
                 label={i18n.t("modules.checkout.form.country") as string}
@@ -216,10 +226,12 @@ const InvoiceDetails = () => {
               <TextField
                 name="city"
                 label={i18n.t("modules.checkout.form.city")}
+                colorLabel={textColor}
               />
               <TextField
                 name="taxId"
                 label={i18n.t("modules.checkout.form.taxId")}
+                colorLabel={textColor}
               />
             </View>
 

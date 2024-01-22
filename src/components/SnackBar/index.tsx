@@ -1,13 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import Animated, {
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from "react-native-reanimated";
+import { Animated, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../../constants/pallete";
 import { clearNotification } from "../../slicer/general/general.actions";
@@ -31,17 +24,14 @@ const INITIALSTATE = {
 };
 
 const Snackbar = () => {
-  const mapState = (state: any) => ({
-    general: state.general,
-  });
   const dispatch = useDispatch();
   const [snackbar, setSnackbar] = useState<SnackbarState>({
     ...INITIALSTATE,
   });
 
-  const translateY = useSharedValue(0);
-
-  const { general } = useSelector(mapState);
+  const { general } = useSelector((state: any) => ({
+    general: state.general,
+  }));
   const { notificationMessage, notificationType } = general;
 
   const getSnackbarElements = (type: string) => {
@@ -84,66 +74,45 @@ const Snackbar = () => {
         type: notificationType,
       });
 
-      translateY.value = withSpring(
-        -120,
-        { damping: 8, stiffness: 100 },
-        (isFinished) => {
-          if (isFinished) {
-            translateY.value = withSpring(
-              200,
-              { damping: 10, stiffness: 100 },
-              (isFinished) => {
-                if (isFinished) {
-                  runOnJS(handleClose)();
-                }
-              }
-            );
-          }
-        }
-      );
+      // Set a timeout to close the Snackbar after 3000ms (adjust as needed)
+      const timeoutId = setTimeout(() => {
+        handleClose();
+      }, 3000);
+
+      return () => clearTimeout(timeoutId);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [general]);
 
   const handleClose = () => {
-    translateY.value = withSpring(0);
-    dispatch(clearNotification());
     setSnackbar({ ...INITIALSTATE });
+    dispatch(clearNotification());
   };
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: translateY.value }],
-    };
-  });
 
   return (
     <>
       {snackbar.open && (
         <Animated.View
-          style={[
-            {
-              position: "absolute",
-              borderRadius: 6,
-              borderWidth: 2,
-              borderColor: Colors.tealc,
-              zIndex: 2000,
-              bottom: 0,
-              right: 20,
-              left: 20,
-              backgroundColor: snackbar.bgcolor,
-              padding: 16,
-              alignItems: "center",
-              flexDirection: "row",
-              justifyContent: "center",
-              shadowColor: "#00000066",
-              shadowOpacity: 0.4,
-              shadowOffset: { width: 0, height: 2 },
-              shadowRadius: 2,
-              elevation: 4,
-            },
-            animatedStyle,
-          ]}
+          style={{
+            position: "absolute",
+            borderRadius: 6,
+            borderWidth: 2,
+            borderColor: Colors.tealc,
+            zIndex: 2000,
+            bottom: 100,
+            right: 20,
+            left: 20,
+            backgroundColor: snackbar.bgcolor,
+            padding: 16,
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            shadowColor: "#00000066",
+            shadowOpacity: 0.4,
+            shadowOffset: { width: 0, height: 2 },
+            shadowRadius: 2,
+            elevation: 4,
+          }}
         >
           <Text style={{ color: Colors.tealc, marginRight: 8 }}>
             {snackbar.icon}

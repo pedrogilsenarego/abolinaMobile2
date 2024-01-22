@@ -22,6 +22,7 @@ interface DropdownProps {
   options: Option[];
   onSelect?: (option: Option) => void;
   label?: string;
+  colorLabel?: string;
   icon?: React.ReactNode;
   name: string;
 }
@@ -29,6 +30,7 @@ interface DropdownProps {
 const DropdownForm: React.FC<DropdownProps> = ({
   options,
   onSelect,
+  colorLabel,
   label,
   icon,
   name,
@@ -57,7 +59,7 @@ const DropdownForm: React.FC<DropdownProps> = ({
           <Text
             style={{
               fontSize: 18,
-              color: "white",
+              color: colorLabel || "white",
               textAlign: "left",
             }}
           >
@@ -71,12 +73,13 @@ const DropdownForm: React.FC<DropdownProps> = ({
         ) : (
           <View
             style={{
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.grey,
               flexDirection: "row",
               justifyContent: "space-between",
               borderRadius: 10,
               borderWidth: 2,
               borderColor: Colors.darkGrey,
+
               paddingVertical: 8,
               paddingHorizontal: 20,
             }}
