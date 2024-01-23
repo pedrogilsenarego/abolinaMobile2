@@ -7,7 +7,7 @@ import "react-native-gesture-handler";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-//import Snackbar from "./src/components/SnackBar";
+import Snackbar from "./src/components/SnackBar";
 import { publishableKeyTest } from "./src/constants/stripe";
 import Screens from "./src/screens";
 import { persistor, store } from "./src/slicer/createStore";
@@ -39,7 +39,7 @@ export default function App() {
         <PersistGate persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <NavigationContainer theme={theme}>
-              {/* <Snackbar /> */}
+              <Snackbar />
               <Screens />
             </NavigationContainer>
           </QueryClientProvider>

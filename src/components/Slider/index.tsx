@@ -48,8 +48,6 @@ const Slider = ({ filteredBooks, currentIndex, setCurrentIndex }: Props) => {
     }, 100);
   };
 
-  console.log(shelf, scrollMode);
-
   useEffect(() => {
     const index = newShelfs.findIndex((shelfA) => shelfA.title === shelf);
 

@@ -32,15 +32,15 @@ interface FORM {
 
 const LoginM = () => {
   const dispatch = useDispatch();
-  // const [request, response, promptAsync] = Google.useAuthRequest({
-  //   iosClientId:
-  //     "217751325798-3nlluau81916va60l5dmk6f4r2g20mho.apps.googleusercontent.com",
-  //   androidClientId:
-  //     "217751325798-o8f0daf23438t1smrg1d7lpii36g3295.apps.googleusercontent.com",
-  // });
-  // const handleGoogleSigniIn = () => {
-  //   promptAsync();
-  // };
+  // // const [request, response, promptAsync] = Google.useAuthRequest({
+  // //   iosClientId:
+  // //     "217751325798-3nlluau81916va60l5dmk6f4r2g20mho.apps.googleusercontent.com",
+  // //   androidClientId:
+  // //     "217751325798-o8f0daf23438t1smrg1d7lpii36g3295.apps.googleusercontent.com",
+  // // });
+  // // const handleGoogleSigniIn = () => {
+  // //   promptAsync();
+  // // };
 
   // useEffect(() => {
   //   if (response?.type == "success") {
