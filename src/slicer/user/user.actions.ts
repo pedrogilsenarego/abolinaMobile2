@@ -48,6 +48,11 @@ export const addNewShelf = (shelf: { title: string; books: string[] }) => ({
   payload: shelf,
 });
 
+export const setUser = (currentUser: any) => ({
+  type: userTypes.SET_USER,
+  payload: currentUser,
+});
+
 export const setBooksRead = (updatedBooksRead: BooksRead[]) => ({
   type: userTypes.SET_BOOKS_READ,
   payload: updatedBooksRead,

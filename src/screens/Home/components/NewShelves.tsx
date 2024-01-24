@@ -12,9 +12,10 @@ import SideModalHeader from "../../../components/SideModalHeader";
 import { Colors } from "../../../constants/pallete";
 import { ROUTE_PATHS } from "../../../constants/routes";
 import useMainColors from "../../../hooks/useMainColors";
-import { addShelf } from "../../../services/shelfs";
+import { addShelf, removeShelf } from "../../../services/shelfs";
+import { updateSuccessNotification } from "../../../slicer/general/general.actions";
 import { State } from "../../../slicer/types";
-import { addNewShelf } from "../../../slicer/user/user.actions";
+import { addNewShelf, setUser } from "../../../slicer/user/user.actions";
 import { CurrentUser } from "../../../slicer/user/user.types";
 import useNewShelves from "./useNewShelves";
 import { FORM_VALIDATION } from "./validationNewShelves";
@@ -29,9 +30,8 @@ interface Props {
 
 const NewShelves = ({ preLoadedBooks }: Props) => {
   const [searchField, setSearchField] = useState<string | null>(null);
-  const currentShelf = useSelector<State, string>(
-    (state) => state.homeFilters.shelf
-  );
+  let currentShelf = "Todos os meus livros";
+  currentShelf = useSelector<State, string>((state) => state.homeFilters.shelf);
   const currentUser = useSelector<State, CurrentUser>(
     (state) => state.user.currentUser
   );
@@ -41,7 +41,7 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
       ? currentUser.shelfs.find((shelf) => shelf.title === currentShelf)
           ?.books || []
       : [];
-
+  const navigate = useNavigation();
   const { organizedBooks } = useNewShelves();
 
   const [listBooks, setListBooks] = useState<string[]>(
@@ -68,6 +68,19 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
       setListBooks((prevListBooks) =>
         prevListBooks.filter((item) => !value.includes(item))
       );
+    }
+  };
+
+  const handleDeleteShelf = async () => {
+    try {
+      const result = await removeShelf(currentUser.id, currentShelf);
+
+      dispatch(setUser(result.user));
+      //@ts-ignore
+      navigate.navigate(ROUTE_PATHS.MAIN_HOME);
+      dispatch(updateSuccessNotification("Prateleira apagada com sucesso!"));
+    } catch (error: any) {
+      setResultAddShelf(error as string);
     }
   };
 
@@ -232,6 +245,14 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
               />
             </View>
             <Text>{resultAddShelf}</Text>
+            {currentShelf !== "Todos os  meus livros" && (
+              <Button
+                onClick={handleDeleteShelf}
+                buttonStyle={{ backgroundColor: "red", borderColor: "red" }}
+                fullwidth
+                label={"Apagar Prateleira"}
+              />
+            )}
           </View>
         </Formik>
       </View>
