@@ -12,7 +12,7 @@ import SideModalHeader from "../../../components/SideModalHeader";
 import { Colors } from "../../../constants/pallete";
 import { ROUTE_PATHS } from "../../../constants/routes";
 import useMainColors from "../../../hooks/useMainColors";
-import { addShelf, removeShelf } from "../../../services/shelfs";
+import { addShelf, removeShelf, updateShelf } from "../../../services/shelfs";
 import { updateSuccessNotification } from "../../../slicer/general/general.actions";
 import { State } from "../../../slicer/types";
 import { addNewShelf, setUser } from "../../../slicer/user/user.actions";
@@ -30,6 +30,7 @@ interface Props {
 
 const NewShelves = ({ preLoadedBooks }: Props) => {
   const [searchField, setSearchField] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   let currentShelf = "Todos os meus livros";
   currentShelf = useSelector<State, string>((state) => state.homeFilters.shelf);
   const currentUser = useSelector<State, CurrentUser>(
@@ -73,31 +74,60 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
 
   const handleDeleteShelf = async () => {
     try {
+      setLoading(true);
       const result = await removeShelf(currentUser.id, currentShelf);
 
       dispatch(setUser(result.user));
+      setLoading(false);
       //@ts-ignore
       navigate.navigate(ROUTE_PATHS.MAIN_HOME);
       dispatch(updateSuccessNotification("Prateleira apagada com sucesso!"));
     } catch (error: any) {
+      setLoading(false);
       setResultAddShelf(error as string);
     }
   };
 
   const handleSubmit = async (title: string) => {
-    try {
-      const result = await addShelf(
-        title,
-        currentUser.id,
-        currentUser.shelfs || [],
-        listBooks,
-        currentShelf === "Todos os  meus livros"
-      );
-      setResultAddShelf(result);
-      dispatch(addNewShelf({ title, books: listBooks }));
-      navigation.goBack();
-    } catch (error: any) {
-      setResultAddShelf(error as string);
+    if (title !== currentShelf && currentShelf !== "Todos os  meus livros")
+      try {
+        setLoading(true);
+        const result = await updateShelf(
+          title,
+          currentUser.id,
+          listBooks,
+          currentShelf
+        );
+        dispatch(setUser(result.user));
+        setLoading(false);
+        //@ts-ignore
+        navigate.navigate(ROUTE_PATHS.MAIN_HOME);
+        dispatch(
+          updateSuccessNotification("Prateleira actualizada com sucesso!")
+        );
+      } catch (error: any) {
+        setResultAddShelf(error as string);
+        setLoading(false);
+      }
+    else {
+      try {
+        setLoading(true);
+        const result = await addShelf(
+          title,
+          currentUser.id,
+          currentUser.shelfs || [],
+          listBooks,
+          currentShelf === "Todos os  meus livros"
+        );
+        setLoading(false);
+        setResultAddShelf(result);
+        dispatch(addNewShelf({ title, books: listBooks }));
+
+        navigation.goBack();
+      } catch (error: any) {
+        setResultAddShelf(error as string);
+        setLoading(false);
+      }
     }
   };
 
@@ -234,6 +264,7 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
               style={{ width: "100%", alignItems: "center", marginTop: 30 }}
             >
               <Button
+                isLoading={loading}
                 fullwidth
                 label={
                   currentShelf !== "Todos os  meus livros" &&
@@ -247,6 +278,7 @@ const NewShelves = ({ preLoadedBooks }: Props) => {
             <Text>{resultAddShelf}</Text>
             {currentShelf !== "Todos os  meus livros" && (
               <Button
+                isLoading={loading}
                 onClick={handleDeleteShelf}
                 buttonStyle={{ backgroundColor: "red", borderColor: "red" }}
                 fullwidth

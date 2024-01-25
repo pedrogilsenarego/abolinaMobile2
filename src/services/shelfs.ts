@@ -99,3 +99,56 @@ export const removeShelf = (
       });
   });
 };
+
+export const updateShelf = (
+  newName: string,
+  userId: string,
+  listBooks: string[],
+  currentShelf: string
+): Promise<{ message: string; user?: any }> => {
+  return new Promise((resolve, reject) => {
+    const userRef = firestore.collection("users").doc(userId);
+
+    userRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const userData = doc.data();
+          if (userData && userData.shelfs) {
+            const updatedShelfs = userData.shelfs.map((shelf: any) =>
+              shelf.title === currentShelf
+                ? { ...shelf, title: newName, books: listBooks }
+                : shelf
+            );
+
+            // Update the user's shelves in the database
+            userRef
+              .update({
+                shelfs: updatedShelfs,
+              })
+              .then(() => {
+                const updatedUser = {
+                  ...userData,
+                  shelfs: updatedShelfs,
+                  id: userId,
+                };
+                resolve({
+                  message: "Shelf updated successfully",
+                  user: updatedUser,
+                });
+              })
+              .catch(() => {
+                reject({ message: "Failed to update shelf" });
+              });
+          } else {
+            reject({ message: "User data or shelves not found" });
+          }
+        } else {
+          reject({ message: "User not found" });
+        }
+      })
+      .catch(() => {
+        reject({ message: "Failed to fetch user data" });
+      });
+  });
+};

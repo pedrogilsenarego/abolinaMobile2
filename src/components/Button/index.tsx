@@ -8,6 +8,7 @@ interface Props {
   label: string;
   onClick?: () => void;
   inverseColors?: boolean;
+  isLoading?: boolean;
   fullwidth?: boolean;
   buttonStyle?: ViewStyle;
   textStyle?: TextStyle;
@@ -16,6 +17,7 @@ interface Props {
 const Button = ({
   formik,
   label,
+  isLoading,
   onClick,
   inverseColors,
   buttonStyle,
@@ -27,6 +29,8 @@ const Button = ({
 
     return (
       <ButtonComponent
+        disabled={isLoading}
+        isLoading={isLoading}
         onPress={submitForm}
         buttonStyle={buttonStyle}
         textStyle={textStyle}
@@ -39,6 +43,8 @@ const Button = ({
   const RenderButton = () => {
     return (
       <ButtonComponent
+        disabled={isLoading}
+        isLoading={isLoading}
         onPress={onClick}
         buttonStyle={buttonStyle}
         textStyle={textStyle}
