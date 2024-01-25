@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  ActivityIndicator,
   Text,
   TextStyle,
   TouchableOpacity,
@@ -15,12 +16,14 @@ interface Props extends TouchableOpacityProps {
   fullwidth?: boolean;
   buttonStyle?: ViewStyle;
   textStyle?: TextStyle;
+  isLoading?: boolean;
 }
 
 const Button = ({
   label,
   onPress,
   inverseColors,
+  isLoading,
   fullwidth,
   buttonStyle,
   textStyle,
@@ -44,16 +47,49 @@ const Button = ({
         }}
         {...rest}
       >
-        <Text
-          style={{
-            color: inverseColors ? Colors.tealc : "white",
-            fontWeight: "800",
-            fontSize: 20,
-            ...textStyle,
-          }}
-        >
-          {label}
-        </Text>
+        {isLoading ? (
+          <View
+            style={{
+              height: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Text
+              style={{
+                color: "transparent",
+                fontWeight: "800",
+                fontSize: 20,
+                ...textStyle,
+              }}
+            >
+              sa
+            </Text>
+            <ActivityIndicator size="small" color={Colors.white} />
+            <Text
+              style={{
+                color: "transparent",
+                fontWeight: "800",
+                fontSize: 20,
+                ...textStyle,
+              }}
+            >
+              sa
+            </Text>
+          </View>
+        ) : (
+          <Text
+            style={{
+              color: inverseColors ? Colors.tealc : "white",
+              fontWeight: "800",
+              fontSize: 20,
+              ...textStyle,
+            }}
+          >
+            {label}
+          </Text>
+        )}
       </TouchableOpacity>
     </View>
   );

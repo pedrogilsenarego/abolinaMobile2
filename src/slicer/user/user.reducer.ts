@@ -60,6 +60,11 @@ const userReducer = (state = INITIAL_STATE, action: Action) => {
         ...state,
         userErr: action.payload,
       };
+    case userTypes.SET_USER:
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
     case userTypes.RESET_USER_STATE:
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
