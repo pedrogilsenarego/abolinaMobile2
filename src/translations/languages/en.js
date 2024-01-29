@@ -106,6 +106,9 @@ export const content = {
             "Please verify first your email to login with your account",
         },
       },
+      book1: {
+        
+      }
     },
   },
 };
