@@ -206,44 +206,46 @@ const TopBar = ({ setSearchField }: Props) => {
         >
           <Ionicons name={"close-outline"} size={32} color={"white"} />
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleDeleteBooks}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Ionicons name={"trash-outline"} size={24} color={"white"} />
-        </TouchableOpacity>
+        <View style={{ display: "flex", flexDirection: "row", columnGap: 15 }}>
+          <TouchableOpacity
+            onPress={handleDeleteBooks}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name={"trash-outline"} size={24} color={"white"} />
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={handleSetReadBooks}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Ionicons name={"book-outline"} size={24} color={"white"} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            dispatch(setShelf("Todos os  meus livros"));
-            // @ts-ignore
-            navigation.navigate(ROUTE_PATHS.SHELVES_CONFIG, {
-              preLoadedBooks: [...booksSelected],
-            });
-          }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginRight: 5,
-          }}
-        >
-          <Ionicons name={"add-circle-outline"} size={24} color={"white"} />
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={handleSetReadBooks}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Ionicons name={"book-outline"} size={24} color={"white"} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              dispatch(setShelf("Todos os  meus livros"));
+              // @ts-ignore
+              navigation.navigate(ROUTE_PATHS.SHELVES_CONFIG, {
+                preLoadedBooks: [...booksSelected],
+              });
+            }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginRight: 5,
+            }}
+          >
+            <Ionicons name={"add-circle-outline"} size={24} color={"white"} />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
