@@ -63,6 +63,7 @@ const Filter = () => {
             onPressOption={(value: HomeFilters) => handleAddFilter(value)}
             state={homeFilters?.filter}
             options={[
+              { name: "Todos", id: "todos" },
               { name: "Lido", id: "read" },
               { name: "Não lido", id: "not-read" },
               { name: "Sem coleção", id: "not-in-collection" },

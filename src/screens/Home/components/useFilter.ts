@@ -22,7 +22,25 @@ const useFilter = () => {
     dispatch(setHomeOrder(id));
   };
   const handleAddFilter = (id: HomeFilters) => {
-    dispatch(setHomeFilter(id));
+    if (id === "todos") {
+      if (homeFilters.filter.includes("todos")) {
+        dispatch(setHomeFilter("todos"));
+        if (homeFilters.filter.includes("read"))
+          dispatch(setHomeFilter("read"));
+        if (homeFilters.filter.includes("not-read"))
+          dispatch(setHomeFilter("not-read"));
+        if (homeFilters.filter.includes("not-in-collection"))
+          dispatch(setHomeFilter("not-in-collection"));
+      } else {
+        dispatch(setHomeFilter("todos"));
+        if (!homeFilters.filter.includes("read"))
+          dispatch(setHomeFilter("read"));
+        if (!homeFilters.filter.includes("not-read"))
+          dispatch(setHomeFilter("not-read"));
+        if (!homeFilters.filter.includes("not-in-collection"))
+          dispatch(setHomeFilter("not-in-collection"));
+      }
+    } else dispatch(setHomeFilter(id));
   };
   const handleClearFilters = () => dispatch(clearFilters());
 
