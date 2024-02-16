@@ -42,6 +42,7 @@ const Book1 = () => {
             marginTop: 130,
             fontSize,
             textAlign: position,
+            fontFamily: "CalibriRegular",
             width: "100%",
           }}
         >
@@ -83,16 +84,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 50,
-            fontSize,
-            textAlign: "right",
-            width: "50%",
-          }}
-        >
-          {i18n.t("book.3")}
-        </Text>
+        <TextMine id={3} position="right" />
       </View>
 
       <View
@@ -112,16 +104,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 30,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.4")}
-        </Text>
+        <TextMine id={4} position="left" />
       </View>
       <View
         style={{
@@ -140,16 +123,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.5")}
-        </Text>
+        <TextMine id={5} position="left" />
       </View>
       <View
         style={{
@@ -176,16 +150,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.6")}
-        </Text>
+        <TextMine id={6} position="right" />
       </View>
       <View
         style={{
@@ -212,16 +177,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.7")}
-        </Text>
+        <TextMine id={7} position="center" />
       </View>
       <View
         style={{
@@ -229,16 +185,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.8")}
-        </Text>
+        <TextMine id={8} position="center" />
       </View>
       <View
         style={{
@@ -265,16 +212,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.9")}
-        </Text>
+        <TextMine id={9} position="right" />
       </View>
       <View
         style={{
@@ -282,16 +220,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.10")}
-        </Text>
+        <TextMine id={10} position="center" />
       </View>
       <View
         style={{
@@ -299,16 +228,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.11")}
-        </Text>
+        <TextMine id={11} position="left" />
       </View>
       <View
         style={{
@@ -335,16 +255,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.12")}
-        </Text>
+        <TextMine id={12} position="center" />
       </View>
       <View
         style={{
@@ -352,16 +263,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.13")}
-        </Text>
+        <TextMine id={13} position="right" />
       </View>
       <View
         style={{
@@ -388,16 +290,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.14")}
-        </Text>
+        <TextMine id={14} position="left" />
       </View>
       <View
         style={{
@@ -405,16 +298,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.15")}
-        </Text>
+        <TextMine id={15} position="center" />
       </View>
       <View
         style={{
@@ -422,16 +306,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.16")}
-        </Text>
+        <TextMine id={16} position="left" />
       </View>
       <View
         style={{
@@ -458,16 +333,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.17")}
-        </Text>
+        <TextMine id={17} position="right" />
       </View>
       <View
         style={{
@@ -475,16 +341,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.18")}
-        </Text>
+        <TextMine id={18} position="center" />
       </View>
       <View
         style={{
@@ -492,16 +349,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.19")}
-        </Text>
+        <TextMine id={19} position="left" />
       </View>
       <View
         style={{
@@ -528,16 +376,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.20")}
-        </Text>
+        <TextMine id={20} position="right" />
       </View>
       <View
         style={{
@@ -545,16 +384,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.21")}
-        </Text>
+        <TextMine id={21} position="center" />
       </View>
       <View
         style={{
@@ -562,16 +392,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.22")}
-        </Text>
+        <TextMine id={22} position="center" />
       </View>
       <View
         style={{
@@ -579,16 +400,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.23")}
-        </Text>
+        <TextMine id={23} position="left" />
       </View>
       <View
         style={{
@@ -615,16 +427,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.24")}
-        </Text>
+        <TextMine id={24} position="right" />
       </View>
       <View
         style={{
@@ -632,16 +435,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.25")}
-        </Text>
+        <TextMine id={25} position="center" />
       </View>
 
       <View
@@ -669,16 +463,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.26")}
-        </Text>
+        <TextMine id={26} position="center" />
       </View>
       <View
         style={{
@@ -705,16 +490,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.27")}
-        </Text>
+        <TextMine id={27} position="center" />
       </View>
       <View
         style={{
@@ -722,16 +498,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.28")}
-        </Text>
+        <TextMine id={28} position="center" />
       </View>
       <View
         style={{
@@ -739,16 +506,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.29")}
-        </Text>
+        <TextMine id={29} position="center" />
       </View>
       <View
         style={{
@@ -775,16 +533,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.30")}
-        </Text>
+        <TextMine id={30} position="right" />
       </View>
       <View
         style={{
@@ -792,16 +541,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.31")}
-        </Text>
+        <TextMine id={31} position="left" />
       </View>
 
       <View
@@ -829,16 +569,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.32")}
-        </Text>
+        <TextMine id={32} position="right" />
       </View>
       <View
         style={{
@@ -846,16 +577,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.33")}
-        </Text>
+        <TextMine id={33} position="center" />
       </View>
       <View
         style={{
@@ -863,16 +585,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "left",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.34")}
-        </Text>
+        <TextMine id={34} position="center" />
       </View>
       <View
         style={{
@@ -899,16 +612,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "right",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.35")}
-        </Text>
+        <TextMine id={35} position="right" />
       </View>
       <View
         style={{
@@ -916,16 +620,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.36")}
-        </Text>
+        <TextMine id={36} position="center" />
       </View>
       <View
         style={{
@@ -933,16 +628,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.37")}
-        </Text>
+        <TextMine id={37} position="center" />
       </View>
       <View
         style={{
@@ -969,16 +655,7 @@ const Book1 = () => {
           width: "100%",
         }}
       >
-        <Text
-          style={{
-            marginTop: 130,
-            fontSize,
-            textAlign: "center",
-            width: "100%",
-          }}
-        >
-          {i18n.t("book.38")}
-        </Text>
+        <TextMine id={38} position="center" />
       </View>
 
       <View
