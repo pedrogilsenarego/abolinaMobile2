@@ -55,11 +55,13 @@ const Product = ({ product, style }: Props) => {
       style={[styles.container, style]}
     >
       {editMode === "book" && (
-        <View style={{ position: "absolute", left: 4, top: 4, zIndex: 1000 }}>
+        <TouchableOpacity
+          style={{ position: "absolute", left: 4, top: 4, zIndex: 1000 }}
+        >
           <RoundCheckBox
             isChecked={booksSelected.includes(product.documentID)}
           />
-        </View>
+        </TouchableOpacity>
       )}
       {isBookRead && (
         <View

@@ -87,6 +87,11 @@ export const setDarkMode = (signal: boolean) => ({
   payload: signal,
 });
 
+export const setBookPos = (signal: number) => ({
+  type: generalTypes.SET_BOOK_POSITION,
+  payload: signal,
+});
+
 export const setNotifications = (signal: boolean) => ({
   type: generalTypes.SET_NOTIFICATIONS,
   payload: signal,

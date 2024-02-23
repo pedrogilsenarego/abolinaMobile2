@@ -10,7 +10,7 @@ export const homeFiltersTypes = {
   SET_PAGE_COLLECTION: "SET_PAGE_COLLECTION",
 };
 
-export type HomeFilters = "read" | "not-read" | "not-in-collection";
+export type HomeFilters = "read" | "not-read" | "not-in-collection" | "todos";
 export type HomeOrder = "asc" | "desc";
 
 export type EditMode = "default" | "book" | "shelf" | "search";

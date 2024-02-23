@@ -18,7 +18,7 @@ const generalTypes = {
   POSITION_VERTICAL: "POSITION_VERTICAL",
 
   SET_LAST_READ: "SET_LAST_READ",
-
+  SET_BOOK_POSITION: "SET_BOOK_POSITION",
   SET_DARK_MODE: "SET_DARK_MODE",
   SET_NOTIFICATIONS: "SET_NOTIFICATIONS",
 };
@@ -34,6 +34,7 @@ export interface GeneralState {
   lastRead: string | null;
   darkMode: boolean;
   notifications: boolean;
+  bookPosition: number;
 }
 
 export enum PaginationTypes {

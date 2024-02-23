@@ -27,6 +27,8 @@ export default function App() {
     InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
     InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
     InterLight: require("./assets/fonts/Inter-Light.ttf"),
+    CalibriRegular: require("./assets/fonts/Calibri_Regular.ttf"),
+    //CalibriBold: require("./assets/fonts/Calibri_Bold.TTF"),
   });
 
   const queryClient = new QueryClient();

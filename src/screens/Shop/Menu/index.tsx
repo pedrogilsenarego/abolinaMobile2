@@ -60,7 +60,7 @@ const Menu = ({ collections, setSideMenu }: Props) => {
             if (setSideMenu) setSideMenu(false);
           }}
           icon={
-            <Ionicons name={"menu-outline"} size={23} color={Colors.tealc} />
+            <Ionicons name={"menu-outline"} size={23} color={"transparent"} />
           }
         />
         <View style={{ paddingHorizontal: 20 }}>
