@@ -15,6 +15,7 @@ const INITIAL_STATE = {
   positionVertical: false,
   darkMode: false,
   notifications: false,
+  bookPosition: 0,
 };
 
 interface Action {
@@ -117,6 +118,11 @@ const generalReducer = (state = INITIAL_STATE, action: Action) => {
       return {
         ...state,
         darkMode: action.payload,
+      };
+    case generalTypes.SET_BOOK_POSITION:
+      return {
+        ...state,
+        bookPosition: action.payload,
       };
     case generalTypes.SET_NOTIFICATIONS:
       return {
