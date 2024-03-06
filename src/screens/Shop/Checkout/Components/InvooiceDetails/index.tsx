@@ -182,7 +182,7 @@ const InvoiceDetails = () => {
 
               <TextField
                 name="email"
-                label={i18n.t("modules.checkout.email")}
+                label={i18n.t("modules.checkout.form.email")}
                 colorLabel={textColor}
               />
               <TextField
