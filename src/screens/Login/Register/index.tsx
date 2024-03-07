@@ -36,7 +36,7 @@ const Register = () => {
         validationSchema={FORM_VALIDATION}
       >
         {(props) => (
-          <View style={{ flex: 1, rowGap: 20, alignItems: "center" }}>
+          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
             <TextField name="name" label={i18n.t("modules.login.name")} />
             <TextField name="email" label={i18n.t("modules.login.email")} />
             <TextField
@@ -44,7 +44,7 @@ const Register = () => {
               label={i18n.t("modules.login.password")}
               password
             />
-            <View style={{ marginTop: 60, width: "100%" }}>
+            <View style={{ marginTop: 20, width: "100%" }}>
               <Button
                 inverseColors
                 label="Register"
