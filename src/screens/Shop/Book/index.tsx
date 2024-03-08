@@ -73,9 +73,30 @@ const BookShop = ({ book }: Props) => {
               marginHorizontal: 30,
             }}
           >
-            <Text style={{ color: textColor, marginTop: 30, fontSize: 20 }}>
-              {book.title}
-            </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginTop: 30,
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text style={{ color: textColor, fontSize: 20 }}>
+                {book.title}
+              </Text>
+
+              <TouchableOpacity
+                //@ts-ignore
+                onPress={() => navigate.navigate(ROUTE_PATHS.CART)}
+              >
+                <Ionicons
+                  name={"cart-outline"}
+                  size={25}
+                  color={Colors.tealc}
+                />
+              </TouchableOpacity>
+            </View>
             <Text style={{ color: Colors.grey, fontSize: 16 }}>
               {book.collections}
             </Text>
