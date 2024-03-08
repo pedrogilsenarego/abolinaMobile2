@@ -66,7 +66,7 @@ const LoginM = () => {
         validationSchema={FORM_VALIDATION}
       >
         {(props) => (
-          <View style={{ flex: 1, rowGap: 20, alignItems: "center" }}>
+          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
             <TextField name="email" label={i18n.t("modules.login.email")} />
             <TextField
               name="password"
@@ -94,7 +94,7 @@ const LoginM = () => {
                 {i18n.t("modules.login.google")}
               </Text>
             </TouchableOpacity> */}
-            <View style={{ marginTop: 90, width: "100%" }}>
+            <View style={{ marginTop: 40, width: "100%" }}>
               <Button
                 inverseColors
                 label="Login"

@@ -34,9 +34,9 @@ const RecoverPwd = () => {
         validationSchema={FORM_VALIDATION}
       >
         {(props) => (
-          <View style={{ flex: 1, rowGap: 20, alignItems: "center" }}>
+          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
             <TextField name="email" label={i18n.t("modules.login.email")} />
-            <View style={{ marginTop: 236, width: "100%" }}>
+            <View style={{ marginTop: 80, width: "100%" }}>
               <Button
                 inverseColors
                 label="Recover Password"

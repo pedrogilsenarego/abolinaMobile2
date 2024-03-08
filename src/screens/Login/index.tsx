@@ -75,7 +75,7 @@ const Login = () => {
         />
       </View>
       <Image
-        style={{ width: 200, height: 200, marginTop: 100 }}
+        style={{ width: 150, height: 150, marginTop: 100 }}
         source={require("../../assets/images/initialLogo.jpg")}
       />
       <View style={{ width: "85%" }}>{renderComponent}</View>
