@@ -59,7 +59,6 @@ const Cart = () => {
           Total
         </Text>
         <Text style={{ fontSize: 20, color: textColor }}>
-          {" "}
           €{calculateTotalValue()}
         </Text>
       </View>

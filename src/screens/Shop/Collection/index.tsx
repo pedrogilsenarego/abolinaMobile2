@@ -45,7 +45,6 @@ const CollectionShop = ({ collection }: Props) => {
             />
           }
         />
-
         <View
           style={{
             borderTopWidth: 2,

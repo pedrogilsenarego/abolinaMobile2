@@ -74,7 +74,6 @@ const Shelves = () => {
             <Text
               style={{ color: Colors.tealc, fontSize: 20, fontWeight: "700" }}
             >
-              {" "}
               PRATELEIRAS
             </Text>
           </View>

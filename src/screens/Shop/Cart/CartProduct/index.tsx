@@ -125,7 +125,6 @@ const CartProductItem = ({ product }: Props) => {
           }}
         >
           <Text style={{ color: textColor }}>
-            {" "}
             €
             {(
               product.product.price *

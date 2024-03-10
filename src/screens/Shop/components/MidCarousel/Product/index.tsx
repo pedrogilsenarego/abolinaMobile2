@@ -13,6 +13,9 @@ type Props = {
 const Product = ({ data, style }: Props) => {
   const navigation = useNavigation();
   const { textColor } = useMainColors();
+
+  const discount = data?.discount || null;
+
   return (
     <TouchableOpacity
       // @ts-ignore
@@ -27,7 +30,7 @@ const Product = ({ data, style }: Props) => {
         ...(style as object),
       }}
     >
-      {data.newBook && (
+      {data?.newBook && (
         <View
           style={{
             position: "absolute",
@@ -42,10 +45,10 @@ const Product = ({ data, style }: Props) => {
             borderRadius: 2,
           }}
         >
-          <Text style={{ color: "white", fontSize: 10 }}>{data.newBook}</Text>
+          <Text style={{ color: "white", fontSize: 10 }}>{data?.newBook}</Text>
         </View>
       )}
-      {data.discount && (
+      {discount && (
         <View
           style={{
             position: "absolute",
@@ -60,7 +63,9 @@ const Product = ({ data, style }: Props) => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "white", fontSize: 10 }}>{data.discount}%</Text>
+          <Text style={{ color: "white", fontSize: 10 }}>
+            {data?.discount}%
+          </Text>
         </View>
       )}
       <Image
