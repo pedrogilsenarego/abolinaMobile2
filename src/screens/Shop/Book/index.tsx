@@ -54,6 +54,9 @@ const BookShop = ({ book }: Props) => {
       });
   }, []);
 
+  const newBook = book?.newBook || null;
+  const discount = book?.discount || null;
+
   return (
     <SafeAreaView style={{ backgroundColor: Colors.blackish, flex: 1 }}>
       <View style={{ backgroundColor }}>
@@ -108,7 +111,7 @@ const BookShop = ({ book }: Props) => {
                   style={{ width: "100%", aspectRatio: 1, borderRadius: 6 }}
                   source={{ uri: book.coverPage[0] }}
                 />
-                {book?.newBook && (
+                {newBook && (
                   <View
                     style={{
                       position: "absolute",
@@ -124,11 +127,11 @@ const BookShop = ({ book }: Props) => {
                     }}
                   >
                     <Text style={{ color: Colors.white, fontSize: 14 }}>
-                      {book.newBook}
+                      {newBook}
                     </Text>
                   </View>
                 )}
-                {book?.discount && (
+                {discount && (
                   <View
                     style={{
                       position: "absolute",
@@ -143,7 +146,7 @@ const BookShop = ({ book }: Props) => {
                     }}
                   >
                     <Text style={{ color: Colors.white, fontSize: 18 }}>
-                      {book?.discount}%
+                      {discount}%
                     </Text>
                   </View>
                 )}
@@ -167,9 +170,9 @@ const BookShop = ({ book }: Props) => {
                   >
                     €{book.price}
                   </Text>
-                  {book.discount && (
+                  {discount && (
                     <Text style={{ fontSize: 18, color: Colors.tealc }}>
-                      €{(book.price * (1 - book.discount / 100)).toFixed(2)}
+                      €{(book.price * (1 - discount / 100)).toFixed(2)}
                     </Text>
                   )}
                 </View>
@@ -208,16 +211,12 @@ const BookShop = ({ book }: Props) => {
                       <Ionicons
                         name={"cart-outline"}
                         size={20}
-                        color={
-                          book.newBook === "soon" ? Colors.grey : Colors.tealc
-                        }
+                        color={newBook === "soon" ? Colors.grey : Colors.tealc}
                       />
                       <Text
                         style={{
                           color:
-                            book.newBook === "soon"
-                              ? Colors.grey
-                              : Colors.tealc,
+                            newBook === "soon" ? Colors.grey : Colors.tealc,
                         }}
                       >
                         Comprar
@@ -260,14 +259,11 @@ const BookShop = ({ book }: Props) => {
                       <Ionicons
                         name={"star-outline"}
                         size={20}
-                        color={
-                          book.newBook === "soon" ? Colors.grey : textColor
-                        }
+                        color={newBook === "soon" ? Colors.grey : textColor}
                       />
                       <Text
                         style={{
-                          color:
-                            book.newBook === "soon" ? Colors.grey : textColor,
+                          color: newBook === "soon" ? Colors.grey : textColor,
                         }}
                       >
                         Favorito
@@ -288,7 +284,7 @@ const BookShop = ({ book }: Props) => {
                   <Ionicons
                     name={"information-circle-outline"}
                     size={20}
-                    color={book.newBook === "soon" ? Colors.grey : Colors.grey}
+                    color={newBook === "soon" ? Colors.grey : Colors.grey}
                   />
                 </View>
               </View>
