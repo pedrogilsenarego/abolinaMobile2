@@ -10,9 +10,13 @@ import {
 import { firestore } from "../../../../config/firebaseConfig";
 import { Colors } from "../../../../constants/pallete";
 import Pagination from "./Pagination";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { ROUTE_PATHS } from "../../../../constants/routes";
+import { useNavigation } from "@react-navigation/native";
 
-const Banner = () => {
+const Banner = ({ books }: { books: any }) => {
   const [images, setImages] = useState<any[]>([]);
+  const navigation = useNavigation();
   const [paginationIndex, setPaginationIndex] = useState<number>(0);
   const [loadingCarrousell, setLoadingCarroussell] = useState<boolean>(false);
   const { width } = Dimensions.get("window");
@@ -74,13 +78,27 @@ const Banner = () => {
             onViewableItemsChanged={handleViewableItemsChanged.current}
             data={images || []}
             renderItem={({ item }) => (
-              <View style={{ width: width, height: 250 }}>
-                <Image
-                  source={{ uri: item.image }}
-                  style={{ flex: 1, width: "100%", height: "100%" }}
-                  resizeMode="cover"
-                />
-              </View>
+              <TouchableOpacity
+                onPress={
+                  item.link
+                    ? () =>
+                        // @ts-ignore
+                        navigation.navigate(ROUTE_PATHS.BOOK_SHOP, {
+                          book: books.find(
+                            (book: any) => book.documentID === item.link
+                          ),
+                        })
+                    : undefined
+                }
+              >
+                <View style={{ width: width, height: 250 }}>
+                  <Image
+                    source={{ uri: item.image }}
+                    style={{ flex: 1, width: "100%", height: "100%" }}
+                    resizeMode="cover"
+                  />
+                </View>
+              </TouchableOpacity>
             )}
           />
         )}

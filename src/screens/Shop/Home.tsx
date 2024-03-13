@@ -98,7 +98,7 @@ const Shop = () => {
   const renderMainPage = () => {
     return (
       <ScrollView style={{ marginBottom: 60 }}>
-        <Banner />
+        <Banner books={books} />
         <MidCarousel
           type="news"
           title="Novidades"
