@@ -20,6 +20,7 @@ const Banner = ({ books }: { books: any }) => {
   const [paginationIndex, setPaginationIndex] = useState<number>(0);
   const [loadingCarrousell, setLoadingCarroussell] = useState<boolean>(false);
   const { width } = Dimensions.get("window");
+  const [scrollMode, setScrollMode] = useState(false);
 
   useEffect(() => {
     const fetchCarrouselContent = async () => {
@@ -48,10 +49,17 @@ const Banner = ({ books }: { books: any }) => {
 
     fetchCarrouselContent();
   }, []);
-  //@ts-ignore
-  const handleViewableItemsChanged = useRef(({ viewableItems, changed }) => {
-    setPaginationIndex(viewableItems[0].index);
-  });
+
+  const handleOnScroll = (event: any) => {
+    setScrollMode(true);
+    const xOffset = event.nativeEvent.contentOffset.x;
+    const index = Math.round(xOffset / width);
+
+    setPaginationIndex(index);
+    setTimeout(() => {
+      setScrollMode(false);
+    }, 100);
+  };
 
   return (
     <View>
@@ -75,7 +83,7 @@ const Banner = ({ books }: { books: any }) => {
             pagingEnabled
             snapToAlignment="center"
             showsHorizontalScrollIndicator={false}
-            onViewableItemsChanged={handleViewableItemsChanged.current}
+            onScroll={handleOnScroll}
             data={images || []}
             renderItem={({ item }) => (
               <TouchableOpacity
