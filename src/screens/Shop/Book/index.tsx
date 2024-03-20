@@ -60,14 +60,68 @@ const BookShop = ({ book }: Props) => {
   return (
     <SafeAreaView style={{ backgroundColor: Colors.blackish, flex: 1 }}>
       <View style={{ backgroundColor }}>
-        <SideModalHeader
+        {/* <SideModalHeader
           title="Book"
           //@ts-ignore
           onBack={() => navigate.navigate(ROUTE_PATHS.SHOP)}
           icon={
             <Ionicons name={"book-outline"} size={23} color={Colors.tealc} />
           }
-        />
+        /> */}
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+
+            alignItems: "center",
+            justifyContent: "center",
+            paddingVertical: 10,
+          }}
+        >
+          <Text
+            style={{
+              color: textColor,
+              fontSize: 16,
+              textTransform: "uppercase",
+            }}
+          >
+            Livraria Online Àbolina
+          </Text>
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingVertical: 20,
+            paddingHorizontal: 24,
+            backgroundColor: Colors.tealc,
+          }}
+        >
+          <TouchableOpacity
+            //@ts-ignore
+            onPress={() => navigate.navigate(ROUTE_PATHS.SHOP)}
+          >
+            <Ionicons name={"menu"} size={25} color={Colors.white} />
+          </TouchableOpacity>
+          <View
+            style={{ display: "flex", flexDirection: "row", columnGap: 10 }}
+          >
+            <TouchableOpacity
+              //@ts-ignore
+              onPress={() => navigate.navigate(ROUTE_PATHS.SHOP_SEARCH)}
+            >
+              <Ionicons name={"search"} size={25} color={Colors.white} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              //@ts-ignore
+              onPress={() => navigate.navigate(ROUTE_PATHS.CART)}
+            >
+              <Ionicons name={"cart-outline"} size={25} color={Colors.white} />
+            </TouchableOpacity>
+          </View>
+        </View>
         <ScrollView>
           <View
             style={{
@@ -88,17 +142,6 @@ const BookShop = ({ book }: Props) => {
               <Text style={{ color: textColor, fontSize: 20 }}>
                 {book.title}
               </Text>
-
-              <TouchableOpacity
-                //@ts-ignore
-                onPress={() => navigate.navigate(ROUTE_PATHS.CART)}
-              >
-                <Ionicons
-                  name={"cart-outline"}
-                  size={25}
-                  color={Colors.tealc}
-                />
-              </TouchableOpacity>
             </View>
             <Text style={{ color: Colors.grey, fontSize: 16 }}>
               {book.collections}
