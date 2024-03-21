@@ -1,7 +1,7 @@
 import LottieView from "lottie-react-native";
 import * as React from "react";
 import { useRef } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,6 +10,7 @@ import { State } from "../../slicer/types";
 import { i18n } from "../../translations/i18n";
 import Header from "../Header";
 import Lottie from "./Lottie";
+import Teste from "./";
 //import { IDigitalBook } from "../../types/digitalBook";
 
 const Book1 = () => {
@@ -50,6 +51,29 @@ const Book1 = () => {
     );
   };
 
+  const LottieMine2 = () => {
+    return (
+      <View
+        style={{
+          marginTop: 30,
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          aspectRatio: 1,
+          borderWidth: 2,
+          borderColor: "black",
+        }}
+      >
+        <Image
+          source={require("./teste.gif")}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </View>
+    );
+  };
   const LottieMine = () => {
     return (
       <View
@@ -57,7 +81,6 @@ const Book1 = () => {
           marginTop: 30,
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "red",
         }}
       >
         <LottieView
@@ -97,6 +120,7 @@ const Book1 = () => {
             width: "100%",
           }}
         >
+          <LottieMine2 />
           <TextMine id={3} position="right" />
         </View>
 
