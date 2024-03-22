@@ -1,4 +1,4 @@
-import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
+import { Ionicons, SimpleLineIcons, Feather } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import {
@@ -330,8 +330,8 @@ const Screens = () => {
                 justifyContent: "center",
               }}
             >
-              <Ionicons
-                name={"folder-outline"}
+              <Feather
+                name={"shopping-bag"}
                 size={27}
                 color={focused ? Colors.tealc : "white"}
               />
