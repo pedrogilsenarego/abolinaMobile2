@@ -24,9 +24,8 @@ const Book1 = () => {
     (state) => state.general.enterBook
   );
 
-  const bookPosRef = useRef(0);
+  const bookPosRef = useRef(0); // Use useRef instead of useState for bookPos
   const scrollViewRef = useRef<ScrollView>(null);
-
   const fontSize = 16;
   const paddingHorizontal = 10;
   const TextMine = ({
@@ -103,16 +102,20 @@ const Book1 = () => {
     );
   };
 
+  // se isto comecar a dar merda tem de ser um butao para ir para onde estava gravado e pronto
+
   React.useEffect(() => {
     if (enterBook) {
-      scrollViewRef?.current?.scrollTo({
-        y: bookPosition,
-        x: 0,
-        animated: false,
-      });
-      dispatch(setEnterBook(false)); // Set enterBook to false after applying the content offset
+      setTimeout(() => {
+        scrollViewRef?.current?.scrollTo({
+          y: bookPosition,
+          x: 0,
+          animated: false,
+        });
+        dispatch(setEnterBook(false));
+      }, 200);
     }
-  }, [enterBook]); // Run this effect whenever enterBook changes
+  }, [enterBook]);
 
   const handleScrollEndDrag = (event: any) => {
     const newBookPos = event.nativeEvent.contentOffset.y;
