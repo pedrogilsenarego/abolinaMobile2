@@ -92,6 +92,11 @@ export const setBookPos = (signal: number) => ({
   payload: signal,
 });
 
+export const setEnterBook = (signal: boolean) => ({
+  type: generalTypes.ENTER_BOOK,
+  payload: signal,
+});
+
 export const setNotifications = (signal: boolean) => ({
   type: generalTypes.SET_NOTIFICATIONS,
   payload: signal,

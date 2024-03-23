@@ -5,12 +5,14 @@ import { Image, ScrollView, Text, View } from "react-native";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { setBookPos } from "../../slicer/general/general.actions";
+import { setBookPos, setEnterBook } from "../../slicer/general/general.actions";
 import { State } from "../../slicer/types";
 import { i18n } from "../../translations/i18n";
 import Header from "../Header";
 import Lottie from "./Lottie";
 import Teste from "./";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Colors } from "../../constants/pallete";
 //import { IDigitalBook } from "../../types/digitalBook";
 
 const Book1 = () => {
@@ -18,8 +20,13 @@ const Book1 = () => {
   const bookPosition = useSelector<State, number>(
     (state) => state.general.bookPosition
   );
-  const bookPosRef = useRef(0); // Use useRef instead of useState for bookPos
+  const enterBook = useSelector<State, boolean>(
+    (state) => state.general.enterBook
+  );
+
+  const bookPosRef = useRef(0);
   const scrollViewRef = useRef<ScrollView>(null);
+
   const fontSize = 16;
   const paddingHorizontal = 10;
   const TextMine = ({
@@ -96,22 +103,38 @@ const Book1 = () => {
     );
   };
 
+  React.useEffect(() => {
+    if (enterBook) {
+      scrollViewRef?.current?.scrollTo({
+        y: bookPosition,
+        x: 0,
+        animated: false,
+      });
+      dispatch(setEnterBook(false)); // Set enterBook to false after applying the content offset
+    }
+  }, [enterBook]); // Run this effect whenever enterBook changes
+
   const handleScrollEndDrag = (event: any) => {
     const newBookPos = event.nativeEvent.contentOffset.y;
     bookPosRef.current = newBookPos;
+  };
+  const handleGoUp = () => {
+    // Scroll to the top of the ScrollView
+    scrollViewRef?.current?.scrollTo({ y: 0, animated: true });
   };
 
   return (
     <View style={{ width: "100%" }}>
       <Header />
+
       <ScrollView
-        contentOffset={{ y: bookPosition, x: 0 }}
+        //contentOffset={enterBook ? { y: bookPosition, x: 0 } : undefined}
         ref={scrollViewRef}
         onScrollEndDrag={handleScrollEndDrag}
         onMomentumScrollEnd={() => {
           dispatch(setBookPos(bookPosRef.current));
         }}
-        style={{ width: "100%" }}
+        style={{ width: "100%", position: "relative" }}
       >
         <View
           style={{
@@ -181,6 +204,7 @@ const Book1 = () => {
           />
         </View>
         {/*6*/}
+
         <View
           style={{
             paddingHorizontal,
@@ -787,6 +811,28 @@ const Book1 = () => {
         <TextMine position="center" id={86} />
         <TextMine position="center" id={87} />
         <LottieMine />
+        <TouchableOpacity onPress={handleGoUp} style={{ marginBottom: 100 }}>
+          <View
+            style={{
+              backgroundColor: Colors.tealc,
+              padding: 20,
+              borderRadius: 10,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                color: "white",
+                textTransform: "uppercase",
+                fontSize: 15,
+              }}
+            >
+              Go up
+            </Text>
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

@@ -14,7 +14,7 @@ const generalTypes = {
   SCROLL_CONTACTS: "SCROLL_CONTACTS",
   PAGINATION_MANAGE_BOOKS: "PAGINATION_MANAGE_BOOKS",
   SET_COOKIE_POLICY: "SET_COOKIE_POLICY",
-
+  ENTER_BOOK: "ENTER_BOOK",
   POSITION_VERTICAL: "POSITION_VERTICAL",
 
   SET_LAST_READ: "SET_LAST_READ",
@@ -35,6 +35,7 @@ export interface GeneralState {
   darkMode: boolean;
   notifications: boolean;
   bookPosition: number;
+  enterBook: boolean;
 }
 
 export enum PaginationTypes {

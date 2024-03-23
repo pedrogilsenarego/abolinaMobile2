@@ -7,7 +7,10 @@ import RoundCheckBox from "../../../components/Inputs/RoundCheckBox";
 import { Colors } from "../../../constants/pallete";
 import { ROUTE_PATHS } from "../../../constants/routes";
 import { Book } from "../../../slicer/books/books.types";
-import { setLastRead } from "../../../slicer/general/general.actions";
+import {
+  setEnterBook,
+  setLastRead,
+} from "../../../slicer/general/general.actions";
 import {
   setEditMode,
   updateBooksSelected,
@@ -49,7 +52,9 @@ const Product = ({ product, style }: Props) => {
           return;
         }
         dispatch(setLastRead(product.documentID));
+        dispatch(setEnterBook(true));
         // @ts-ignore
+
         navigation.navigate(ROUTE_PATHS.BOOK_READER);
       }}
       style={[styles.container, style]}

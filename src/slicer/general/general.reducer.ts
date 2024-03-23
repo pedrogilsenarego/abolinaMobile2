@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   darkMode: false,
   notifications: false,
   bookPosition: 0,
+  enterBook: false,
 };
 
 interface Action {
@@ -128,6 +129,11 @@ const generalReducer = (state = INITIAL_STATE, action: Action) => {
       return {
         ...state,
         notifications: action.payload,
+      };
+    case generalTypes.ENTER_BOOK:
+      return {
+        ...state,
+        enterBook: action.payload,
       };
     default:
       return state;
