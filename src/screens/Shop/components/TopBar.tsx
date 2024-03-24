@@ -2,8 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import React, { useRef, useState } from "react";
-import { TouchableOpacity, View } from "react-native";
-import { useDispatch } from "react-redux";
+import { TouchableOpacity, View, Text } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import DrawerPopup from "../../../components/DrawerPopup";
 import TextField from "../../../components/Inputs/TextField";
 import { Colors } from "../../../constants/pallete";
@@ -12,6 +12,8 @@ import { Book } from "../../../slicer/books/books.types";
 import { setShopMode } from "../../../slicer/homeFilters/homeFilters.actions";
 import { ShopMode } from "../../../slicer/homeFilters/homeFilters.types";
 import Menu from "../Menu";
+import { State } from "../../../slicer/types";
+import { CartProduct } from "../../../slicer/cart/cart.types";
 
 type Props = {
   collections: any;
@@ -26,6 +28,14 @@ const TopBar = ({ collections, setSearchField, shopMode, books }: Props) => {
   const topRef = useRef(null);
   const dispatch = useDispatch();
   const [sideDrawer, setSideDrawer] = useState(false);
+  const cart = useSelector<State, CartProduct[]>(
+    (state) => state.cart.cartItems
+  );
+
+  const numberCartItems = cart.reduce(
+    (total, cartItem) => total + cartItem.value,
+    0
+  );
 
   const Default = () => {
     return (
@@ -41,24 +51,6 @@ const TopBar = ({ collections, setSearchField, shopMode, books }: Props) => {
           justifyContent: "space-between",
         }}
       >
-        {/* <TouchableOpacity
-          onPress={() => {
-            // @ts-ignore
-            navigation.navigate(ROUTE_PATHS.SHOP_MENU, { collections });
-          }}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Ionicons
-            name={"list-outline"}
-            size={24}
-            color={"white"}
-            style={{ marginLeft: 5 }}
-          />
-        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={() => {
             setSideDrawer(true);
@@ -101,12 +93,29 @@ const TopBar = ({ collections, setSearchField, shopMode, books }: Props) => {
             <Ionicons name={"search"} size={24} color={"white"} />
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ marginRight: 5 }}
+            style={{ marginRight: 5, position: "relative" }}
             onPress={
               // @ts-ignore
               () => navigation.navigate(ROUTE_PATHS.CART)
             }
           >
+            <View
+              style={{
+                backgroundColor: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                aspectRatio: 1,
+                zIndex: 10000,
+                right: -4,
+                top: -4,
+                height: 15,
+                borderRadius: 10,
+                position: "absolute",
+              }}
+            >
+              <Text style={{ fontSize: 8 }}>{numberCartItems}</Text>
+            </View>
             <Ionicons name={"cart-outline"} size={24} color={"white"} />
           </TouchableOpacity>
         </View>
