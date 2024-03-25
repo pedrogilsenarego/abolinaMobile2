@@ -114,7 +114,9 @@ const TopBar = ({ collections, setSearchField, shopMode, books }: Props) => {
                 position: "absolute",
               }}
             >
-              <Text style={{ fontSize: 8 }}>{numberCartItems}</Text>
+              <Text style={{ fontSize: 8, color: Colors.tealc }}>
+                {numberCartItems}
+              </Text>
             </View>
             <Ionicons name={"cart-outline"} size={24} color={"white"} />
           </TouchableOpacity>

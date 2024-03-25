@@ -18,6 +18,7 @@ import {
   updateSuccessNotification,
 } from "../../../slicer/general/general.actions";
 import { State } from "../../../slicer/types";
+import { CartProduct } from "../../../slicer/cart/cart.types";
 
 type Props = {
   book: Book;
@@ -36,6 +37,14 @@ const BookShop = ({ book }: Props) => {
     (favorite) => favorite.product.documentID === book.documentID
   );
   const navigate = useNavigation();
+  const cart = useSelector<State, CartProduct[]>(
+    (state) => state.cart.cartItems
+  );
+
+  const numberCartItems = cart.reduce(
+    (total, cartItem) => total + cartItem.value,
+    0
+  );
 
   useEffect(() => {
     console.log(`fetching collection ${book.collections}`);
@@ -95,6 +104,7 @@ const BookShop = ({ book }: Props) => {
             alignItems: "center",
             justifyContent: "space-between",
             paddingVertical: 20,
+
             paddingHorizontal: 24,
             backgroundColor: Colors.tealc,
           }}
@@ -106,7 +116,12 @@ const BookShop = ({ book }: Props) => {
             <Ionicons name={"menu"} size={25} color={Colors.white} />
           </TouchableOpacity>
           <View
-            style={{ display: "flex", flexDirection: "row", columnGap: 10 }}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              columnGap: 10,
+              position: "relative",
+            }}
           >
             <TouchableOpacity
               //@ts-ignore
@@ -120,6 +135,26 @@ const BookShop = ({ book }: Props) => {
             >
               <Ionicons name={"cart-outline"} size={25} color={Colors.white} />
             </TouchableOpacity>
+            <View
+              style={{
+                backgroundColor: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                aspectRatio: 1,
+
+                zIndex: 10000,
+                right: 6,
+                top: -2,
+                height: 15,
+                borderRadius: 10,
+                position: "absolute",
+              }}
+            >
+              <Text style={{ fontSize: 8, color: Colors.tealc }}>
+                {numberCartItems}
+              </Text>
+            </View>
           </View>
         </View>
         <ScrollView>

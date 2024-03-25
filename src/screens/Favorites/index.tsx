@@ -18,6 +18,7 @@ import { FavoritesProduct } from "../../slicer/favorites/favorites.types";
 import { State } from "../../slicer/types";
 import { i18n } from "../../translations/i18n";
 import Product from "./components/Product";
+import { CartProduct } from "../../slicer/cart/cart.types";
 
 const Favorites = () => {
   const favorites = useSelector<State, FavoritesProduct[]>(
@@ -28,6 +29,15 @@ const Favorites = () => {
   const [sortOption, setSortOption] = useState<
     "ascTitle" | "descTitle" | "ascState" | "descState"
   >("ascTitle");
+
+  const cart = useSelector<State, CartProduct[]>(
+    (state) => state.cart.cartItems
+  );
+
+  const numberCartItems = cart.reduce(
+    (total, cartItem) => total + cartItem.value,
+    0
+  );
 
   const navigation = useNavigation();
 
@@ -110,11 +120,32 @@ const Favorites = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity
+            style={{ position: "relative" }}
             onPress={
               //@ts-ignore
               () => navigation.navigate(ROUTE_PATHS.CART)
             }
           >
+            <View
+              style={{
+                backgroundColor: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                aspectRatio: 1,
+                borderWidth: 1,
+                zIndex: 10000,
+                right: -4,
+                top: -4,
+                height: 15,
+                borderRadius: 10,
+                position: "absolute",
+              }}
+            >
+              <Text style={{ fontSize: 8, color: Colors.tealc }}>
+                {numberCartItems}
+              </Text>
+            </View>
             <Ionicons
               style={{}}
               name={"cart-outline"}
