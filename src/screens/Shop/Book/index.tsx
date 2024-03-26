@@ -135,26 +135,28 @@ const BookShop = ({ book }: Props) => {
             >
               <Ionicons name={"cart-outline"} size={25} color={Colors.white} />
             </TouchableOpacity>
-            <View
-              style={{
-                backgroundColor: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                aspectRatio: 1,
+            {numberCartItems > 0 && (
+              <View
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  aspectRatio: 1,
 
-                zIndex: 10000,
-                right: 6,
-                top: -2,
-                height: 15,
-                borderRadius: 10,
-                position: "absolute",
-              }}
-            >
-              <Text style={{ fontSize: 8, color: Colors.tealc }}>
-                {numberCartItems}
-              </Text>
-            </View>
+                  zIndex: 10000,
+                  right: 6,
+                  top: -2,
+                  height: 15,
+                  borderRadius: 10,
+                  position: "absolute",
+                }}
+              >
+                <Text style={{ fontSize: 8, color: Colors.tealc }}>
+                  {numberCartItems}
+                </Text>
+              </View>
+            )}
           </View>
         </View>
         <ScrollView>

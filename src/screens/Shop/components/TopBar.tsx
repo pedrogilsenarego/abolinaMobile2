@@ -99,25 +99,27 @@ const TopBar = ({ collections, setSearchField, shopMode, books }: Props) => {
               () => navigation.navigate(ROUTE_PATHS.CART)
             }
           >
-            <View
-              style={{
-                backgroundColor: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                aspectRatio: 1,
-                zIndex: 10000,
-                right: -4,
-                top: -4,
-                height: 15,
-                borderRadius: 10,
-                position: "absolute",
-              }}
-            >
-              <Text style={{ fontSize: 8, color: Colors.tealc }}>
-                {numberCartItems}
-              </Text>
-            </View>
+            {numberCartItems > 0 && (
+              <View
+                style={{
+                  backgroundColor: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  aspectRatio: 1,
+                  zIndex: 10000,
+                  right: -4,
+                  top: -4,
+                  height: 15,
+                  borderRadius: 10,
+                  position: "absolute",
+                }}
+              >
+                <Text style={{ fontSize: 8, color: Colors.tealc }}>
+                  {numberCartItems}
+                </Text>
+              </View>
+            )}
             <Ionicons name={"cart-outline"} size={24} color={"white"} />
           </TouchableOpacity>
         </View>
