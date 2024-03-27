@@ -1,5 +1,5 @@
 import React from "react";
-import { Keyboard, View } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 
 import Button from "../../../components/Button";
 
@@ -29,34 +29,36 @@ const Register = () => {
     Keyboard.dismiss();
   };
   return (
-    <View style={{ display: "flex", flexDirection: "row" }}>
-      <Formik
-        initialValues={{ ...INITIAL_STATE }}
-        onSubmit={(values) => handleSubmit(values)}
-        validationSchema={FORM_VALIDATION}
-      >
-        {(props) => (
-          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
-            <TextField name="name" label={i18n.t("modules.login.name")} />
-            <TextField name="email" label={i18n.t("modules.login.email")} />
-            <TextField
-              name="password"
-              label={i18n.t("modules.login.password")}
-              password
-            />
-            <View style={{ marginTop: 20, width: "100%" }}>
-              <Button
-                inverseColors
-                label="Register"
-                formik
-                fullwidth
-                buttonStyle={{ borderWidth: 0 }}
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <Formik
+          initialValues={{ ...INITIAL_STATE }}
+          onSubmit={(values) => handleSubmit(values)}
+          validationSchema={FORM_VALIDATION}
+        >
+          {(props) => (
+            <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
+              <TextField name="name" label={i18n.t("modules.login.name")} />
+              <TextField name="email" label={i18n.t("modules.login.email")} />
+              <TextField
+                name="password"
+                label={i18n.t("modules.login.password")}
+                password
               />
+              <View style={{ marginTop: 20, width: "100%" }}>
+                <Button
+                  inverseColors
+                  label="Register"
+                  formik
+                  fullwidth
+                  buttonStyle={{ borderWidth: 0 }}
+                />
+              </View>
             </View>
-          </View>
-        )}
-      </Formik>
-    </View>
+          )}
+        </Formik>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

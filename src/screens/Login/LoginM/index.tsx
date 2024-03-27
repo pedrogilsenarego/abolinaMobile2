@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { Formik } from "formik";
 import React, { useEffect } from "react";
-import { Keyboard, Text, TouchableOpacity, View } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View } from "react-native";
 import { useDispatch } from "react-redux";
 import Button from "../../../components/Button";
 import TextField from "../../../components/Inputs/TextField";
@@ -59,22 +59,23 @@ const LoginM = () => {
     Keyboard.dismiss();
   };
   return (
-    <View style={{ display: "flex", flexDirection: "row" }}>
-      <Formik
-        initialValues={{ ...INITIAL_STATE }}
-        onSubmit={(values) => handleSubmit(values)}
-        validationSchema={FORM_VALIDATION}
-      >
-        {(props) => (
-          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
-            <TextField name="email" label={i18n.t("modules.login.email")} />
-            <TextField
-              name="password"
-              label={i18n.t("modules.login.password")}
-              password
-            />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <Formik
+          initialValues={{ ...INITIAL_STATE }}
+          onSubmit={(values) => handleSubmit(values)}
+          validationSchema={FORM_VALIDATION}
+        >
+          {(props) => (
+            <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
+              <TextField name="email" label={i18n.t("modules.login.email")} />
+              <TextField
+                name="password"
+                label={i18n.t("modules.login.password")}
+                password
+              />
 
-            {/* <TouchableOpacity
+              {/* <TouchableOpacity
               onPress={handleGoogleSigniIn}
               style={{
                 marginTop: 30,
@@ -94,19 +95,20 @@ const LoginM = () => {
                 {i18n.t("modules.login.google")}
               </Text>
             </TouchableOpacity> */}
-            <View style={{ marginTop: 40, width: "100%" }}>
-              <Button
-                inverseColors
-                label="Login"
-                formik
-                fullwidth
-                buttonStyle={{ borderWidth: 0 }}
-              />
+              <View style={{ marginTop: 40, width: "100%" }}>
+                <Button
+                  inverseColors
+                  label="Login"
+                  formik
+                  fullwidth
+                  buttonStyle={{ borderWidth: 0 }}
+                />
+              </View>
             </View>
-          </View>
-        )}
-      </Formik>
-    </View>
+          )}
+        </Formik>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 

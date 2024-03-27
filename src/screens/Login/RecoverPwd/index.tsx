@@ -1,5 +1,11 @@
 import React from "react";
-import { Keyboard, Text, TouchableOpacity, View } from "react-native";
+import {
+  Keyboard,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { useDispatch } from "react-redux";
 
 import Button from "../../../components/Button";
@@ -27,28 +33,30 @@ const RecoverPwd = () => {
     dispatch(recoverPassword(values.email));
   };
   return (
-    <View style={{ display: "flex", flexDirection: "row" }}>
-      <Formik
-        initialValues={{ ...INITIAL_STATE }}
-        onSubmit={(values) => handleSubmit(values)}
-        validationSchema={FORM_VALIDATION}
-      >
-        {(props) => (
-          <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
-            <TextField name="email" label={i18n.t("modules.login.email")} />
-            <View style={{ marginTop: 80, width: "100%" }}>
-              <Button
-                inverseColors
-                label="Recover Password"
-                formik
-                fullwidth
-                buttonStyle={{ borderWidth: 0 }}
-              />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={{ display: "flex", flexDirection: "row" }}>
+        <Formik
+          initialValues={{ ...INITIAL_STATE }}
+          onSubmit={(values) => handleSubmit(values)}
+          validationSchema={FORM_VALIDATION}
+        >
+          {(props) => (
+            <View style={{ flex: 1, rowGap: 10, alignItems: "center" }}>
+              <TextField name="email" label={i18n.t("modules.login.email")} />
+              <View style={{ marginTop: 80, width: "100%" }}>
+                <Button
+                  inverseColors
+                  label="Recover Password"
+                  formik
+                  fullwidth
+                  buttonStyle={{ borderWidth: 0 }}
+                />
+              </View>
             </View>
-          </View>
-        )}
-      </Formik>
-    </View>
+          )}
+        </Formik>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
