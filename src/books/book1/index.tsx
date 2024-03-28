@@ -13,6 +13,7 @@ import Lottie from "./Lottie";
 import Teste from "./";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Colors } from "../../constants/pallete";
+import * as Icons from "@expo/vector-icons";
 //import { IDigitalBook } from "../../types/digitalBook";
 
 const Book1 = () => {
@@ -28,6 +29,32 @@ const Book1 = () => {
   const scrollViewRef = useRef<ScrollView>(null);
   const fontSize = 16;
   const paddingHorizontal = 10;
+
+  const ButtonUp = () => {
+    return (
+      <TouchableOpacity onPress={handleGoUp}>
+        <View
+          style={{
+            backgroundColor: "#00000066",
+            borderColor: "#ffffffCC",
+            borderWidth: 2,
+            width: 40,
+            height: 40,
+            borderRadius: 6,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Icons.MaterialIcons
+            name={"arrow-drop-up"}
+            size={26}
+            color={"white"}
+          />
+        </View>
+      </TouchableOpacity>
+    );
+  };
   const TextMine = ({
     position,
     id,
@@ -158,7 +185,11 @@ const Book1 = () => {
             backgroundColor: "red",
           }}
         >
-          <Lottie file={require("./lottie-exemplo-3.json")} />
+          <Text>before</Text>
+          <Lottie file={require("./lottie-exemplo-4.json")} />
+          <Text>bring</Text>
+          <Lottie file={require("./lottie-exemplo-5.json")} />
+          <Text>after</Text>
         </View>
         {/*4*/}
         <View
@@ -813,29 +844,13 @@ const Book1 = () => {
         <LottieMine />
         <TextMine position="center" id={86} />
         <TextMine position="center" id={87} />
-        <LottieMine />
-        <TouchableOpacity onPress={handleGoUp} style={{ marginBottom: 100 }}>
-          <View
-            style={{
-              backgroundColor: Colors.tealc,
-              padding: 20,
-              borderRadius: 10,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-                textTransform: "uppercase",
-                fontSize: 15,
-              }}
-            >
-              Go up
-            </Text>
+        <View style={{ position: "relative" }}>
+          <LottieMine />
+          <View style={{ position: "absolute", bottom: 20, right: 30 }}>
+            <ButtonUp />
           </View>
-        </TouchableOpacity>
+        </View>
+        <View style={{ height: 100 }} />
       </ScrollView>
     </View>
   );
